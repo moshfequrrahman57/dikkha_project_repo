@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login with OTP</title>
+</head>
+<body>
+    <h2>Enter your mobile number to receive an OTP</h2>
+    
+    <form method="POST" action="{% url 'otp_send' %}">
+        {% csrf_token %} <!-- Essential for Django POST requests -->
+        
+        <label for="phone">Mobile Number:</label>
+        <input type="tel" id="phone" name="phone_number" 
+               placeholder="+8801XXXXXXXXX" 
+               pattern="[0-9]{11}" required>
+        
+        <button type="submit">Send OTP</button>
+    </form>
+    
+    {% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
+</body>
+</html>
