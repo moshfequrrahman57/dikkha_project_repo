@@ -20,7 +20,7 @@ def otp_send(request):
     api_key = "6RHBKFUG3CX9RRH"
 
     headers = {
-        "Authorization": f"Bearer {api_key}",
+        "Authorization": f"bearer {api_key}",
         "Content-Type": "application/json"
         
     }
@@ -29,9 +29,9 @@ def otp_send(request):
                 "Apikey": "6RHBKFUG3CX9RRH",
                 "MobileNumber": f"{phone_number}",
                 "CampaignId": "null",
-                "SenderName": "Bismillah",
+                "SenderName": "8809617632661",
                 "TransactionType": "T",
-                "Message": f" Assalamualikum from Noman. Your OTP is {otp}"
+                "Message": f"Assalamualikum from Noman. Your OTP is {otp}"
                 }
     try:
         response =requests.post(url, data=json.dumps(payload), headers=headers)
