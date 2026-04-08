@@ -36,9 +36,9 @@ def otp_send(request):
     try:
         response =requests.post(url, data=json.dumps(payload), headers=headers)
         if response.status_code == 200:
-            return HttpResponse(f"OTP {otp} sent to {phone_number} successfully!")
+            return HttpResponse(f"{response.json()}")
         else:
-            return HttpResponse(f"Failed to send OTP. Status code: {response.status_code}, Response: {response.text}")
+            return HttpResponse(f"{response.text}")
             
     except Exception as e:
         return HttpResponse(f"An exception error occurred: {str(e)}")
