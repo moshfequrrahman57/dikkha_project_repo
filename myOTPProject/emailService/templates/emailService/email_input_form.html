@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Email Input</title>
+</head>
+<body>
+    <h2>Enter your email  </h2>
+    
+    <form method="POST" action="{% url 'email_send' %}">
+        {% csrf_token %} <!-- Essential for Django POST requests -->
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" 
+               placeholder="you@example.com" 
+               required>
+        
+        <button type="submit">Send Email</button>
+    </form>
+    
+    {% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
+</body>
+</html>

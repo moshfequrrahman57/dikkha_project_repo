@@ -21,5 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('welcome/', include('welcome.urls')),
     path('otp/', include('otpApp.urls')),
+    path('email/', include('emailService.urls')),
 
 ]
