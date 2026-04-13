@@ -15,7 +15,9 @@ async def generate_pdf(request,teacher_id):
     html_content = render_to_string('myPdf/certificate.html', context)
 
     async with async_playwright() as p:
-        browser = await p.chromium.launch()
+        browser = await p.chromium.launch(headless=True, 
+            args=['--no-sandbox', '--disable-setuid-sandbox']
+            )
         # Create a browser context for isolation
         context = await browser.new_context()
         page = await context.new_page()
