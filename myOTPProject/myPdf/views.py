@@ -11,7 +11,7 @@ def generate_pdf(request, teacher_id):
     html_string = render_to_string('myPdf/certificate.html', teacher_data)
     
     # পিডিএফ তৈরি
-    html = HTML(string=html_string)
+    html = HTML(string=html_string,base_url=request.build_absolute_uri('/'))
     pdf = html.write_pdf()
     
     # ব্রাউজারে পিডিএফ রেসপন্স পাঠানো
