@@ -2,10 +2,13 @@
             size: A4 landscape;
             margin: 0;
         }
+       /* myPdf/static/myPdf/css/style.css */
         @font-face {
-        font-family: 'KalpurushFont'; /* আপনার পছন্দমতো একটি নাম দিন */
-        src: url('../fonts/kalpurush.ttf') format('truetype');
-        
+        font-family: 'KalpurushFont';
+        /* Use the absolute file path on the cPanel server */
+        src: url('file:///home/dikkhain/dikkha_project_repo/myOTPProject/myPdf/static/myPdf/fonts/kalpurush.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
         }
       
         body {
