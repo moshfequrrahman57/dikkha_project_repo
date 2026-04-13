@@ -1,24 +1,36 @@
 
+
+
+# def generate_pdf(request, teacher_id):
+
+import os
 from django.http import HttpResponse
 from django.template.loader import render_to_string
-from weasyprint import CSS, HTML
+from playwright.async_api import async_playwright
+from django.conf import settings
 
-from myOTPProject import settings
-import os
+async def generate_pdf(request,teacher_id):
+    # 1. Render template to HTML
+    context = {'data': 'Your dynamic content here'}
+    html_content = render_to_string('myPdf/certificate.html', context)
 
-def generate_pdf(request, teacher_id):
-    # ডাটাবেস থেকে শিক্ষকের তথ্য আনা
-    teacher_data = {'name': 'মোঃ মুনতাসির আবিদ', 'course': 'ICT Training'}
-    
-    # HTML টেম্পলেটকে স্ট্রিং এ রূপান্তর
-   
-    css_path = os.path.join(settings.BASE_DIR, 'myPdf', 'static', 'myPdf', 'css', 'style.css')
-    html_string = render_to_string('myPdf/certificate.html', {'font_path': css_path, 'teacher_data': teacher_data})
-    html = HTML(string=html_string, base_url=str(settings.BASE_DIR))
-    # পিডিএফ তৈরি
-    pdf = html.write_pdf()
-    
-    # ব্রাউজারে পিডিএফ রেসপন্স পাঠানো
-    response = HttpResponse(pdf, content_type='application/pdf')
-    response['Content-Disposition'] = 'inline; filename="certificate.pdf"'
+    async with async_playwright() as p:
+        browser = await p.chromium.launch()
+        # Create a browser context for isolation
+        context = await browser.new_context()
+        page = await context.new_page()
+
+        # 2. Load the HTML content
+        # 'networkidle' ensures fonts from your static folder are fully loaded
+        await page.set_content(html_content, wait_until="networkidle")
+
+        # 3. Generate PDF 
+        # print_background=True ensures your CSS colors and fonts appear
+        pdf_bytes = await page.pdf(format="A4", print_background=True)
+        await browser.close()
+
+    response = HttpResponse(pdf_bytes, content_type='application/pdf')
+    response['Content-Disposition'] = 'inline; filename="report.pdf"'
     return response
+
+    
