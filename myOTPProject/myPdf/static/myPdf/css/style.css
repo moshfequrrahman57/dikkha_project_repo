@@ -2,11 +2,16 @@
             size: A4 landscape;
             margin: 0;
         }
+        @font-face {
+        font-family: 'KalpurushFont'; /* আপনার পছন্দমতো একটি নাম দিন */
+        src: url('../fonts/kalpurush.ttf') format('truetype');
+        
+        }
       
         body {
             margin: 0;
             padding: 0;
-            font-family:  'Helvetica', 'Arial', sans-serif;
+            font-family:  'KalpurushFont', 'Helvetica', 'Arial', sans-serif;
             background-color: #f8f9fa;
         }
         .certificate-container {
