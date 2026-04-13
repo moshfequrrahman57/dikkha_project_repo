@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'welcome',
     'otpApp',
     'emailService',
+    'myPdf'
 ]
 
 MIDDLEWARE = [
@@ -119,6 +120,10 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+# import os
+import os
+from dotenv import load_dotenv
+load_dotenv()  # Load environment variables from .env file
 
 #email backend configuration
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -127,7 +132,8 @@ EMAIL_PORT = 465
 EMAIL_USE_SSL = True
 EMAIL_USE_TLS = False
 EMAIL_HOST_USER = 'banbeis@dikkha.info'
-EMAIL_HOST_PASSWORD = 'Hello@26' 
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+
 
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 

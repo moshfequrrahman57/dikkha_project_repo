@@ -22,5 +22,6 @@ urlpatterns = [
     path('welcome/', include('welcome.urls')),
     path('otp/', include('otpApp.urls')),
     path('email/', include('emailService.urls')),
+    path('pdf/', include('myPdf.urls')),
 
 ]
