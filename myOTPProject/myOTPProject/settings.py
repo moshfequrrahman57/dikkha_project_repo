@@ -118,15 +118,21 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
-STATIC_URL = 'otpservice/static/'
-STATICFILES_DIRS = [
-    BASE_DIR / "myPdf" / "static",
-]
-
 # import os
 import os
 from dotenv import load_dotenv
 load_dotenv()  # Load environment variables from .env file
+
+STATIC_URL = '/static/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') 
+
+# CSS ফাইলের সঠিক পাথ পেতে এটি ব্যবহার করুন
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+
+
 
 #email backend configuration
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
