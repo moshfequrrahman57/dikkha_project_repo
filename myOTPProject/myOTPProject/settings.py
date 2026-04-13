@@ -118,7 +118,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = 'otpservice/static/'
 STATICFILES_DIRS = [
     BASE_DIR / "myPdf" / "static",
 ]
