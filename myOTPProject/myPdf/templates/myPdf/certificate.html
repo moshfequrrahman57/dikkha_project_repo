@@ -4,14 +4,14 @@
     <style>
         /* Import Google Font directly */
         @import url('https://googleapis.com');
-
+{% comment %} 
         @font-face {
         font-family: 'kalpurush';
         /* static ফোল্ডারের সঠিক পাথ দিন */
         src: url('file://{{ font_path }}') format('truetype');
         font-weight: normal;
         font-style: normal;
-    }
+    } {% endcomment %}
 
         body {
             font-family: 'Roboto', sans-serif;
@@ -22,7 +22,7 @@
             color: #007bff;
         }
         .myCustomFont{
-            font-family: 'kalpurush', sans-serif;
+            font-family: 'Kalpurush', sans-serif;
             font-size: 56px;
             color: #cb1a1a;
         }
