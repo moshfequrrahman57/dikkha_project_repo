@@ -7,6 +7,7 @@ from weasyprint import HTML, CSS
 from weasyprint.fonts import FontConfiguration
 
 def generate_pdf(request,teacher_id):
+    print(f"Request scheme: {request.scheme}, Host: {request.get_host()}, Path: {request.path}")
     # 1. Prepare data for the template
     context = {'some_variable': 'মোঃ মোশফেকুর রহমান '}
     
@@ -19,7 +20,7 @@ def generate_pdf(request,teacher_id):
     
     # 4. Generate PDF
     # base_url ensures relative paths for images/CSS work correctly
-    html = HTML(string=html_string, base_url=request.build_absolute_uri())
+    html = HTML(string=html_string, base_url=request.build_absolute_uri('/'))
     pdf = html.write_pdf(font_config=font_config)
     
     # 5. Return PDF as an HTTP Response
