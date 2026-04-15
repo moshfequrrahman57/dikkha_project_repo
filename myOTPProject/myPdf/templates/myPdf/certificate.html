@@ -110,6 +110,25 @@
             font-size: 12px;
             color: #1a2a6c;
         }
+        .qr-code-container {
+        position: absolute; /* Useful for placing it in a specific corner */
+        bottom: 50px;
+        right: 50px;
+        text-align: center;
+        justify-content: center;
+    }
+    .qr-code-container img {
+        display: block;
+        margin-bottom: 5px;
+        width: 150px;
+        height: 150px;
+    }
+    .qr-code-container p {
+        font-size: 10px;
+        color: #555;
+        font-family: sans-serif;
+    }
+
     </style>
 </head>
 <body>
@@ -129,7 +148,11 @@
                 তার মেধা ও দক্ষতার স্বীকৃতিস্বরূপ এই সনদ প্রদান করা হলো।
             </div>
 
-            <div class="badge">ICT PRO</div>
+            <div class="qr-code-container">
+    <!-- This is the magic line -->
+    <img src="data:image/png;base64,{{ qr_base64 }}" alt="Certificate QR Code" width="120" height="120">
+    <p>Scan to verify authenticity</p>
+</div>
 
             <div class="footer">
                 <div class="signature-box">

@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'welcome',
     'otpApp',
     'emailService',
-    'myPdf'
+    'myPdf',
+    'myQRCode',
 ]
 
 MIDDLEWARE = [
