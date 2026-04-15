@@ -1,117 +1,42 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }}</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wght@100..800&display=swap" rel="stylesheet">
-    
     <style>
-        /* ১. কাস্টম বাংলা ফন্ট লোড করা (আপনার static ফোল্ডারে ফন্টটি থাকতে হবে) */
-        {% comment %} @font-face {
-            font-family: 'SolaimanLipi';
-            /* Playwright এর জন্য absolute path ব্যবহার করা ভালো */
-            src: url('file://{{ font_path }}') format('truetype');
-            font-weight: normal;
-            font-style: normal;
-        } {% endcomment %}
-
-        /* ২. গুগল ফন্ট (বিকল্প হিসেবে যদি ইন্টারনেট কানেকশন থাকে) */
-        {% comment %} @import url('https://googleapis.com'); {% endcomment %}
+        /* Import Google Font directly */
+        @import url('https://googleapis.com');
 
         body {
-            margin: 0;
-            padding: 40px;
-            /* আপনার পছন্দমতো ফন্ট প্রায়োরিটি দিন */
-            font-family: 'SolaimanLipi', 'Hind Siliguri', Arial, sans-serif;
-            font-size: 24px;
-            line-height: 1.6;
+            font-family: 'Roboto', sans-serif;
+            font-size: 14px;
             color: #333;
         }
-
-        {% comment %} .anek-bangla-my {
-        font-family: "Anek Bangla", sans-serif;
-        font-optical-sizing: auto;
-        font-weight: 400;
-        font-style: normal;
-        font-variation-settings: "wdth" 100;
-        color: #f04e0f;
-        font-size: 24px;
-        } {% endcomment %}
-
-        .header {
-            text-align: center;
-            border-bottom: 2px solid #444;
-            margin-bottom: 30px;
-            padding-bottom: 10px;
-        }
-
         h1 {
-            color: #2c3e50;
-            margin: 0;
+            color: #007bff;
         }
+        .myCustomFont{
+            font-family: 'Roboto', sans-serif;
+            font-size: 56px;
+            color: #cb1a1a;
+        }
+        .tiro-bangla-regular {
+  font-family: "Tiro Bangla", serif;
+  font-weight: 400;
+  font-style: normal;
+}
 
-        .content {
-            margin-top: 20px;
-        }
+.tiro-bangla-regular-italic {
+  font-family: "Tiro Bangla", serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 56px;
+  color: #1acb78;
+}
 
-        .bangla-text {
-            font-size: 18px;
-            color: #1a1a1a;
-        }
-
-        /* ৩. পেজ ব্রেক এবং মার্জিন কন্ট্রোল (PDF এর জন্য জরুরি) */
-        @page {
-            size: A4;
-            orientation: landscape;
-            margin: 20mm;
-        }
-
-        .footer {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            text-align: center;
-            font-size: 12px;
-            color: #777;
-        }
     </style>
 </head>
 <body>
-
-    <div class="header">
-        <h1>{{ report_title }}</h1>
-        <p>তারিখ: {{ date }}</p>
-    </div>
-
-    <div class="content">
-        <h2 class="anek-bangla-my">প্রিয় গ্রাহক,</h2>
-        <p class="anek-bangla-my">
-            আপনার অর্ডারের বিবরণ নিচে দেওয়া হলো। আমাদের ওপর আস্থা রাখার জন্য ধন্যবাদ। 
-            
-        </p>
-
-        <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
-            <thead>
-                <tr style="background-color: #f2f2f2;">
-                    <th style="border: 1px solid #ddd; padding: 10px; text-align: left;">বিবরণ</th>
-                    <th style="border: 1px solid #ddd; padding: 10px; text-align: right;">মূল্য</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td style="border: 1px solid #ddd; padding: 10px;">সফটওয়্যার সার্ভিস</td>
-                    <td style="border: 1px solid #ddd; padding: 10px; text-align: right;">৫০০০/-</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div class="footer">
-        স্বয়ংক্রিয়ভাবে তৈরি রিপোর্ট - ২০২৬
-    </div>
-
+    <h1>Project Report</h1>
+    <p>This PDF was generated using WeasyPrint and includes the custom <strong>Roboto</strong> font from Google.</p>
+    <p class="tiro-bangla-regular-italic">Data from Django: {{ some_variable }}</p>
 </body>
 </html>

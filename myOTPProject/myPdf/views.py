@@ -1,38 +1,30 @@
 
 
 
-# def generate_pdf(request, teacher_id):
-
-import os
 from django.http import HttpResponse
 from django.template.loader import render_to_string
-from playwright.async_api import async_playwright
-from django.conf import settings
+from weasyprint import HTML, CSS
+from weasyprint.fonts import FontConfiguration
 
-async def generate_pdf(request,teacher_id):
-    # 1. Render template to HTML
-    context = {'data': 'Your dynamic content here'}
-    html_content = render_to_string('myPdf/certificate.html', context)
-
-    async with async_playwright() as p:
-        browser = await p.chromium.launch(headless=True, 
-            args=['--no-sandbox', '--disable-setuid-sandbox']
-            )
-        # Create a browser context for isolation
-        context = await browser.new_context()
-        page = await context.new_page()
-
-        # 2. Load the HTML content
-        # 'networkidle' ensures fonts from your static folder are fully loaded
-        await page.set_content(html_content, wait_until="networkidle")
-
-        # 3. Generate PDF 
-        # print_background=True ensures your CSS colors and fonts appear
-        pdf_bytes = await page.pdf(format="A4", print_background=True)
-        await browser.close()
-
-    response = HttpResponse(pdf_bytes, content_type='application/pdf')
-    response['Content-Disposition'] = 'inline; filename="report.pdf"'
+def generate_pdf(request,teacher_id):
+    # 1. Prepare data for the template
+    context = {'some_variable': 'মোঃ মোশফেকুর রহমান '}
+    
+    # 2. Render HTML template to a string
+    html_string = render_to_string('myPdf/certificate.html', context)
+    
+    # 3. Handle Fonts
+    # FontConfiguration is required for @font-face or remote Google Fonts to work
+    font_config = FontConfiguration()
+    
+    # 4. Generate PDF
+    # base_url ensures relative paths for images/CSS work correctly
+    html = HTML(string=html_string, base_url=request.build_absolute_uri())
+    pdf = html.write_pdf(font_config=font_config)
+    
+    # 5. Return PDF as an HTTP Response
+    response = HttpResponse(pdf, content_type='application/pdf')
+    response['Content-Disposition'] = 'inline; filename="generated_report.pdf"'
+    
     return response
 
-    
