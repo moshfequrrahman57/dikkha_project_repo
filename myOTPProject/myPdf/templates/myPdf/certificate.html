@@ -5,6 +5,14 @@
         /* Import Google Font directly */
         @import url('https://googleapis.com');
 
+        @font-face {
+        font-family: 'kalpurush';
+        /* static ফোল্ডারের সঠিক পাথ দিন */
+        src: url('{{ request.scheme }}://{{ request.get_host }}/static/myPdf/fonts/kalpurush.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
+
         body {
             font-family: 'Roboto', sans-serif;
             font-size: 14px;
@@ -14,7 +22,7 @@
             color: #007bff;
         }
         .myCustomFont{
-            font-family: 'Roboto', sans-serif;
+            font-family: 'kalpurush', sans-serif;
             font-size: 56px;
             color: #cb1a1a;
         }
@@ -28,7 +36,7 @@
   font-family: "Tiro Bangla", serif;
   font-weight: 400;
   font-style: italic;
-  font-size: 56px;
+  font-size: 46px;
   color: #1acb78;
 }
 
@@ -37,6 +45,6 @@
 <body>
     <h1>Project Report</h1>
     <p>This PDF was generated using WeasyPrint and includes the custom <strong>Roboto</strong> font from Google.</p>
-    <p class="tiro-bangla-regular-italic">Data from Django: {{ some_variable }}</p>
+    <p class="myCustomFont">Data from Django: {{ some_variable }}</p>
 </body>
 </html>
