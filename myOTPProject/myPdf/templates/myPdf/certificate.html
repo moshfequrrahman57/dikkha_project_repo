@@ -8,7 +8,7 @@
         @font-face {
         font-family: 'kalpurush';
         /* static ফোল্ডারের সঠিক পাথ দিন */
-        src: url('{{ request.scheme }}://{{ request.get_host }}/static/myPdf/fonts/kalpurush.ttf') format('truetype');
+        src: url('file://{{ font_path }}') format('truetype');
         font-weight: normal;
         font-style: normal;
     }

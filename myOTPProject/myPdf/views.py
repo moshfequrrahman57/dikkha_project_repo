@@ -5,11 +5,18 @@ from django.http import HttpResponse
 from django.template.loader import render_to_string
 from weasyprint import HTML, CSS
 from weasyprint.fonts import FontConfiguration
+import os
+from django.conf import settings
 
 def generate_pdf(request,teacher_id):
-    print(f"Request scheme: {request.scheme}, Host: {request.get_host()}, Path: {request.path}")
+    font_path = os.path.join(settings.BASE_DIR, 'static/myPdf/fonts/kalpurush.ttf')
+    print(f"Font path: {font_path}", flush=True)  # Debug: Check if the font path is correct
     # 1. Prepare data for the template
-    context = {'some_variable': 'মোঃ মোশফেকুর রহমান '}
+    context = {
+        'font_path': font_path,  # Pass the font path to the template
+        'some_variable': 'মোঃ মোশফেকুর রহমান '
+        }
+    
     
     # 2. Render HTML template to a string
     html_string = render_to_string('myPdf/certificate.html', context)
