@@ -1,50 +1,146 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <style>
-        /* Import Google Font directly */
-        @import url('https://googleapis.com');
-{% comment %} 
+        @page {
+            size: A4 landscape;
+            margin: 0;
+            
+        }
         @font-face {
-        font-family: 'kalpurush';
-        /* static ফোল্ডারের সঠিক পাথ দিন */
-        src: url('file://{{ font_path }}') format('truetype');
-        font-weight: normal;
-        font-style: normal;
-    } {% endcomment %}
+            font-family: 'Kalpurush';
+            /* Using system font name since it is registered in your server */
+            src: local('Kalpurush');
+        }
 
         body {
-            font-family: 'Roboto', sans-serif;
-            font-size: 14px;
-            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
-        h1 {
-            color: #007bff;
-        }
-        .myCustomFont{
+
+        .certificate-container {
+            width: 800px;
+            height: 560px;
+            padding: 40px;
+            background-color: #fff;
+            border: 15px solid #1a2a6c;
+            position: relative;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
             font-family: 'Kalpurush', sans-serif;
-            font-size: 56px;
-            color: #cb1a1a;
         }
-        .tiro-bangla-regular {
-  font-family: "Tiro Bangla", serif;
-  font-weight: 400;
-  font-style: normal;
-}
 
-.tiro-bangla-regular-italic {
-  font-family: "Tiro Bangla", serif;
-  font-weight: 400;
-  font-style: italic;
-  font-size: 46px;
-  color: #1acb78;
-}
+        .certificate-border-inner {
+            border: 2px solid #b21f1f;
+            height: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
 
+        .header {
+            font-size: 42px;
+            color: #1a2a6c;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .sub-header {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .presented-to {
+            font-size: 18px;
+            font-style: italic;
+            margin-bottom: 5px;
+        }
+
+        .student-name {
+            font-size: 36px;
+            color: #b21f1f;
+            border-bottom: 2px solid #ccc;
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 0 50px;
+        }
+
+        .course-info {
+            font-size: 18px;
+            line-height: 1.6;
+            margin: 0 auto 40px;
+            width: 80%;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 60px;
+            padding: 0 40px;
+        }
+
+        .signature-box {
+            width: 200px;
+            border-top: 1px solid #333;
+            padding-top: 5px;
+            font-size: 16px;
+        }
+
+        .badge {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 80px;
+            background: gold;
+            border-radius: 50%;
+            border: 4px double #b21f1f;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 12px;
+            color: #1a2a6c;
+        }
     </style>
 </head>
 <body>
-    <h1>Project Report</h1>
-    <p>This PDF was generated using WeasyPrint and includes the custom <strong>Roboto</strong> font from Google.</p>
-    <p class="myCustomFont">Data from Django: {{ some_variable }}</p>
+
+    <div class="certificate-container">
+        <div class="certificate-border-inner">
+            <div class="header">Certificate of Achievement</div>
+            <div class="sub-header">Basic ICT Skills Module</div>
+
+            <div class="presented-to">This is to certify that</div>
+            <div class="student-name">{{ name }}</div>
+
+            <div class="course-info">
+                has successfully completed the <strong>Basic ICT Skills Training</strong> 
+                covering Computer Fundamentals, MS Office, and Internet Essentials.
+                <br>
+                তার মেধা ও দক্ষতার স্বীকৃতিস্বরূপ এই সনদ প্রদান করা হলো।
+            </div>
+
+            <div class="badge">ICT PRO</div>
+
+            <div class="footer">
+                <div class="signature-box">
+                    Instructor Signature
+                </div>
+                <div class="signature-box">
+                    Date: April 15, 2026
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>

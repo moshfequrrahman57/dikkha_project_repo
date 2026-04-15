@@ -14,7 +14,7 @@ def generate_pdf(request,teacher_id):
     # 1. Prepare data for the template
     context = {
         'font_path': font_path,  # Pass the font path to the template
-        'some_variable': 'মোঃ মোশফেকুর রহমান '
+        'name': 'মোছা ইসমত আরা মৌসুমি'
         }
     
     
