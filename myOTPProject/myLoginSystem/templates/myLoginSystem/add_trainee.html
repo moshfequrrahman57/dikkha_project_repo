@@ -1,0 +1,20 @@
+<! ---- add trainee.html ---->
+
+<h2>Add Trainee</h2>
+<form method="post">
+    {% csrf_token %}
+    <label for="year">Year:</label>
+    <input type="text" id="year" name="year" required><br><br>  
+    <label for="course">Course:</label>
+    <input type="text" id="course" name="course" required><br><br>  
+    <label for="batch">Batch:</label>
+    <input type="text" id="batch" name="batch" required><br><br>  
+    <label for="roll_number">Roll Number:</label>
+    <input type="text" id="roll_number" name="roll_number" required><br><br>  
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required><br><br>  
+    <label for="mobile_no">Mobile No:</label>
+    <input type="text" id="mobile_no" name="mobile_number" required><br><br>  
+    <!-- Add other fields as necessary -->
+    <input type="submit" value="Add Trainee">
+</form>

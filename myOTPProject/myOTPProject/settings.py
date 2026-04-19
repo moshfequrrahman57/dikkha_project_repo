@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'emailService',
     'myPdf',
     'myQRCode',
+    'myLoginSystem',
 ]
 
 MIDDLEWARE = [
@@ -77,12 +78,29 @@ WSGI_APPLICATION = 'myOTPProject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+import os
+from dotenv import load_dotenv
+load_dotenv()  # Load environment variables from .env file
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD', ''),
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
+
+
+
 
 
 # Password validation
@@ -120,18 +138,18 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 # import os
-import os
-from dotenv import load_dotenv
-load_dotenv()  # Load environment variables from .env file
+# import os
+# from dotenv import load_dotenv
+# load_dotenv()  # Load environment variables from .env file
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') 
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') 
 
-# CSS ফাইলের সঠিক পাথ পেতে এটি ব্যবহার করুন
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
+# # CSS ফাইলের সঠিক পাথ পেতে এটি ব্যবহার করুন
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'static'),
+# ]
 
 
 

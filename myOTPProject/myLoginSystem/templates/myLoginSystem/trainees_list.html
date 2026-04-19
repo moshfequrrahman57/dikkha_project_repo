@@ -1,0 +1,33 @@
+<!-- your_template.html -->
+<table border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Year</th>
+            <th>Course</th>
+            <th>Batch</th>
+            <th>Roll Number</th>
+            <th>Name</th>
+            <th>Mobile no</th>
+            <!-- Add other column headers here -->
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in trainees %}
+        <tr>
+            <td>{{ item.id }}</td>
+            <td>{{ item.year }}</td>
+            <td>{{ item.course }}</td>
+            <td>{{ item.batch }}</td>
+            <td>{{ item.roll_number }}</td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.mobile_number}}</td>
+            <!-- Use dot notation to access your model fields -->
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="3">No data found in the table.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
