@@ -144,6 +144,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATICFILES_DIRS = [
+    BASE_DIR / "static",   # project level static folder
+]
+# collectstatic করার পর ফাইল যেখানে জমা হবে
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 # STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') 
 
 # # CSS ফাইলের সঠিক পাথ পেতে এটি ব্যবহার করুন

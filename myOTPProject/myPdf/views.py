@@ -8,33 +8,32 @@ from weasyprint.fonts import FontConfiguration
 import os
 from django.conf import settings
 from myQRCode.utils import generate_qr
+from django.shortcuts import render
 
 def generate_pdf(request,teacher_id):
     verification_url = "https://example.com/verify?token=abc123"
-    qr_base64 = generate_qr(verification_url)
-    font_path = os.path.join(settings.BASE_DIR, 'static/myPdf/fonts/kalpurush.ttf')
-    print(f"Font path: {font_path}", flush=True)  # Debug: Check if the font path is correct
-    # 1. Prepare data for the template
+    qr_code = generate_qr(verification_url)
+    logo_path = os.path.join(settings.STATIC_ROOT, 'myPdf/images/bg3.png')
+    print(logo_path)
     context = {
-        'font_path': font_path,  # Pass the font path to the template
+        
         'name': 'মোঃ মুনতাসির আবিদ',
-        'qr_base64': qr_base64
+        'course': 'Basic ICT Training For Teachers',
+        'date': '2024-06-01',
+        'qr_code': qr_code,
+        
+
         }
     
     
-    # 2. Render HTML template to a string
+
     html_string = render_to_string('myPdf/certificate.html', context)
     
-    # 3. Handle Fonts
-    # FontConfiguration is required for @font-face or remote Google Fonts to work
-    font_config = FontConfiguration()
+   
+    html = HTML(string=html_string, base_url=settings.STATIC_ROOT)
+    pdf = html.write_pdf(stylesheets=[CSS(os.path.join(settings.STATIC_ROOT, 'myPdf/css/style.css'))])
     
-    # 4. Generate PDF
-    # base_url ensures relative paths for images/CSS work correctly
-    html = HTML(string=html_string, base_url=request.build_absolute_uri('/'))
-    pdf = html.write_pdf(font_config=font_config)
     
-    # 5. Return PDF as an HTTP Response
     response = HttpResponse(pdf, content_type='application/pdf')
     response['Content-Disposition'] = 'inline; filename="generated_report.pdf"'
     
