@@ -13,14 +13,15 @@ from django.shortcuts import render
 def generate_pdf(request,teacher_id):
     verification_url = "https://example.com/verify?token=abc123"
     qr_code = generate_qr(verification_url)
-    logo_path = os.path.join(settings.STATIC_ROOT, 'myPdf/images/bg3.png')
-    print(logo_path)
+    media_path = os.path.join(settings.MEDIA_ROOT)
+    print(media_path)
     context = {
         
         'name': 'মোঃ মুনতাসির আবিদ',
         'course': 'Basic ICT Training For Teachers',
         'date': '2024-06-01',
         'qr_code': qr_code,
+        'media_path': media_path,
         
 
         }
