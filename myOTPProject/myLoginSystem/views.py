@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import OtpserviceTrainees
+from .models import OtpserviceTrainees, CertificateAuthorityForm
 
 
 
@@ -39,4 +39,21 @@ def add_trainee(request):
         trainee.save()
         return redirect('trainees_list')
     return render(request, 'myLoginSystem/add_trainee.html')
+
+
+
+
+def add_certificate_authority(request):
+    if request.method == 'POST':
+        form = CertificateAuthorityForm(request.POST, request.FILES) # ইমেজ থাকলে FILES দিতেই হবে
+        if form.is_valid():
+            form.save()
+            return redirect('success_signature_upload') # সেভ হওয়ার পর যেখানে পাঠাতে চান
+    else:
+        form = CertificateAuthorityForm()
     
+    return render(request, 'myLoginSystem/add_authority.html', {'form': form})
+
+def success_signature_upload(request):
+    return HttpResponse("Signature uploaded successfully!")
+
