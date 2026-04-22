@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['dikkha.info', 'www.dikkha.info', '103.65.138.226','127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,9 +44,11 @@ INSTALLED_APPS = [
     'myPdf',
     'myQRCode',
     'myLoginSystem',
+
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -53,6 +56,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+CORS_ALLOWED_ORIGINS = [
+    "https://dikkha.info",        # আপনার মেইন ডোমেইন   # www সহ ডোমেইন
 ]
 
 ROOT_URLCONF = 'myOTPProject.urls'
