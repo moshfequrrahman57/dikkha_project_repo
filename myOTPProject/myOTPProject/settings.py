@@ -59,8 +59,15 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "https://dikkha.info",        # আপনার মেইন ডোমেইন   # www সহ ডোমেইন
+    "http://dikkha.info",  # https এর বদলে http দিন
+    "http://dikkha.info",
 ]
+
+# নিচের সিকিউরিটি সেটিংসগুলো আপাতত False রাখুন (যদি থাকে)
+SECURE_SSL_REDIRECT = False
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = False
+
 
 ROOT_URLCONF = 'myOTPProject.urls'
 
