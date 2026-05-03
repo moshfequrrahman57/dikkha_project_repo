@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-ro!krgn*j_gbl262n6=y3y7*gi8l9fxc_0v++!u-h+bg_%cdpm
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['dikkha.info', 'www.dikkha.info', '103.65.138.226','127.0.0.1', 'api.dikkha.info']
+ALLOWED_HOSTS = ['dikkha.info', 'www.dikkha.info', '103.65.138.226','127.0.0.1', 
+                 'api.dikkha.info', '74.220.48.0/24','74.220.56.0/24']
 
 
 # Application definition

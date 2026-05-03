@@ -8,10 +8,12 @@ charset-normalizer==3.4.7
 cssselect2==0.9.0
 defusedxml==0.7.1
 Django==6.0.3
+django-cors-headers==4.9.0
 fonttools==4.62.1
 greenlet==3.4.0
 html5lib==1.1
 idna==3.11
+mysqlclient==2.2.8
 pillow==12.2.0
 playwright==1.58.0
 pycparser==3.0
