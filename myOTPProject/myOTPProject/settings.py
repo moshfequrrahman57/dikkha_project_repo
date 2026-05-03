@@ -152,13 +152,14 @@ USE_TZ = True
 # from dotenv import load_dotenv
 # load_dotenv()  # Load environment variables from .env file
 
-STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [
-    BASE_DIR / "static",   # project level static folder
-]
-# collectstatic করার পর ফাইল যেখানে জমা হবে
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # Render এই ফোল্ডারটি খুঁজবে
+
+# WhiteNoise কে ফাইল কমপ্রেস করার অনুমতি দিন
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 
 # STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') 
 
