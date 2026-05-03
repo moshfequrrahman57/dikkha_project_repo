@@ -98,18 +98,15 @@ WSGI_APPLICATION = 'myOTPProject.wsgi.application'
 #     }
 # }
 import os
+import dj_database_url
 from dotenv import load_dotenv
 load_dotenv()  # Load environment variables from .env file
 
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('DB_NAME'),
-        'USER': os.getenv('DB_USER'),
-        'PASSWORD': os.getenv('DB_PASSWORD'),
-        'HOST': 'localhost',
-        'PORT': '3306',
-    }
+    'default': dj_database_url.config(
+        default=os.environ.get('DATABASE_URL')
+    )
 }
 
 
