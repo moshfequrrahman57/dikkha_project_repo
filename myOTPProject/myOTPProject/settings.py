@@ -187,5 +187,5 @@ EMAIL_HOST_USER= 'a5b5a3001@smtp-brevo.com'
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 
 
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+DEFAULT_FROM_EMAIL = 'moshfequrrahman57@gmail.com'
 
