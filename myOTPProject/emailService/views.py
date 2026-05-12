@@ -11,9 +11,9 @@ def email_input_form(request):
 def email_send(request):
     email = request.POST.get('email')
     print(f"Email entered: {email}")
-    subject = "Test Email from Noman dikkha"
+    subject = "Test Email from Brevo smtp api server"
     message = "This is a test email sent from the banbeis dikkha  Email  application. Here used " \
-    "gmail smtp server"
+    "brevo smtp api  server"
     from_email = settings.DEFAULT_FROM_EMAIL
     recipient_list = [email]
 

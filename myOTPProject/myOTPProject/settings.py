@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'anymail',
     'welcome',
     'otpApp',
     'emailService',
@@ -175,17 +176,22 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 
-#email backend configuration
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_HOST = 'mail.dikkha.info'
-EMAIL_HOST = 'smtp-relay.brevo.com'
-EMAIL_PORT = 587
-EMAIL_USE_SSL = False
-EMAIL_USE_TLS = True
-# EMAIL_HOST_USER = 'banbeis@dikkha.info'
-EMAIL_HOST_USER= 'a5b5a3001@smtp-brevo.com'
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+# #email backend configuration
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# # EMAIL_HOST = 'mail.dikkha.info'
+# EMAIL_HOST = 'smtp-relay.brevo.com'
+# EMAIL_PORT = 587
+# EMAIL_USE_SSL = False
+# EMAIL_USE_TLS = True
+# # EMAIL_HOST_USER = 'banbeis@dikkha.info'
+# EMAIL_HOST_USER= 'a5b5a3001@smtp-brevo.com'
+# EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 
 
-DEFAULT_FROM_EMAIL = 'moshfequrrahman57@gmail.com'
+# DEFAULT_FROM_EMAIL = 'moshfequrrahman57@gmail.com'
+ANYMAIL = {
+    "BREVO_API_KEY": os.getenv('BREVO_EMAIL_API_KEY'), # SMTP Key নয়, API Key ট্যাব থেকে নিন
+}
+EMAIL_BACKEND = "anymail.backends.brevo.EmailBackend"
+DEFAULT_FROM_EMAIL = "moshfequrrahman57@gmail.com"
 
